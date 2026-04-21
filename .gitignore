@@ -1,0 +1,16 @@
+# Extensiones de VS Code y configuraciones locales
+.vscode/
+
+# Archivos temporales del sistema (Windows/Mac)
+Thumbs.db
+.DS_Store
+
+# Carpetas de dependencias (por si luego usas npm o librerías)
+node_modules/
+
+# Archivos de bitácora/errores
+*.log
+
+# Carpetas de distribución (si usas algún compilador en el futuro)
+dist/
+build/
