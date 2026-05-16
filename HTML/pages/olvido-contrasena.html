@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banca 360 UCAB - Recuperar Contraseña</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+    <div class="main-login-container">
+        <div class="login-card wide-card">
+            <a href="../index.html" class="back-arrow">←</a>
+            
+            <div class="login-card-header">
+                <div class="lock-icon-container">
+                    <span class="lock-placeholder">🔑</span>
+                </div>
+            </div>
+
+            <div class="login-card-form">
+                <h1 class="login-title" id="flow-title">Recuperar Contraseña</h1>
+                
+                <div id="general-error" class="error-text" style="display: none; text-align: center; margin-bottom: 15px;"></div>
+                
+                <div id="loading" class="loading-overlay" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Validando respuestas</p>
+                </div>
+
+                <form id="recoveryForm" class="login-form" novalidate>
+                    
+                    <div id="step-user">
+                        <div class="form-group">
+                            <label class="form-label">Introduce tu Correo Electrónico <span class="required">*</span></label>
+                            <input type="email" id="email" class="form-control" placeholder="Ej: usuario@gmail.com" required>
+                        </div>
+                        <div class="button-group">
+                            <button type="button" id="btn-search-user" class="btn-acceso">Buscar Usuario</button>
+                        </div>
+                    </div>
+
+                    <div id="step-questions" style="display: none;">
+                        <p style="font-size: 0.9rem; text-align: center; margin-bottom: 20px; opacity: 0.8;">
+                            Responde correctamente las preguntas configuradas en tu registro.
+                        </p>
+                        
+                        <div class="form-group">
+                            <label class="form-label" id="lbl-q1"></label>
+                            <input type="text" id="ans1" class="form-control" placeholder="Tu respuesta" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" id="lbl-q2"></label>
+                            <input type="text" id="ans2" class="form-control" placeholder="Tu respuesta" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" id="lbl-q3"></label>
+                            <input type="text" id="ans3" class="form-control" placeholder="Tu respuesta" required>
+                        </div>
+
+                        <div class="button-group">
+                            <button type="button" id="btn-verify-answers" class="btn-acceso">Confirmar Respuestas</button>
+                        </div>
+                    </div>
+
+                    <div id="step-new-password" style="display: none;">
+                        <div class="form-group">
+                            <label class="form-label">Nueva Contraseña <span class="required">*</span></label>
+                            <div class="password-input-container">
+                                <input type="password" id="new-password" class="form-control" placeholder="Ingresa tu nueva contraseña" required>
+                                <span class="material-symbols-outlined toggle-password" onclick="togglePass('new-password', this)">visibility</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Confirmar Nueva Contraseña <span class="required">*</span></label>
+                            <div class="password-input-container">
+                                <input type="password" id="confirm-password" class="form-control" placeholder="Repite la contraseña" required>
+                                <span class="material-symbols-outlined toggle-password" onclick="togglePass('confirm-password', this)">visibility</span>
+                            </div>
+                        </div>
+
+                        <div class="button-group">
+                            <button type="submit" class="btn-acceso">Actualizar Contraseña</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="../js/olvido-contrasena.js"></script>
+</body>
+</html>
