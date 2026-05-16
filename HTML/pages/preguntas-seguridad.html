@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banca 360 UCAB - Preguntas de Seguridad</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+    <div class="main-login-container">
+        <div class="login-card wide-card">
+            <div class="login-card-header">
+                <div class="lock-icon-container">
+                    <span class="lock-placeholder">🛡️</span>
+                </div>
+            </div>
+            <div class="login-card-form">
+                <h1 class="login-title">Preguntas de Seguridad</h1>
+                <form id="securityForm" class="login-form" novalidate>
+                    <div id="general-error" class="error-text" style="display: none; text-align: center; margin-bottom: 15px;"></div>
+
+                    <div class="form-group">
+                        <label class="form-label">Primera pregunta <span class="required">*</span></label>
+                        <select id="q1" class="form-control-select" required>
+                            <option value="" disabled selected>Selecciona una pregunta</option>
+                            <option value="¿Cuál es el país donde nació?">¿Cuál es el país donde nació?</option>
+                            <option value="¿Cuál es su comida favorita?">¿Cuál es su comida favorita?</option>
+                            <option value="¿Cuál es su color favorito?">¿Cuál es su color favorito?</option>
+                            <option value="¿Cuál es el segundo nombre de tu madre?">¿Cuál es el segundo nombre de tu madre?</option>
+                            <option value="¿En qué ciudad nacieron tus padres?">¿En qué ciudad nacieron tus padres?</option>
+                        </select>
+                        <input type="text" id="a1" class="form-control" placeholder="Escribe tu respuesta" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Segunda pregunta <span class="required">*</span></label>
+                        <select id="q2" class="form-control-select" required>
+                            <option value="" disabled selected>Selecciona una pregunta</option>
+                            <option value="¿Cuál es el país donde nació?">¿Cuál es el país donde nació?</option>
+                            <option value="¿Cuál es su comida favorita?">¿Cuál es su comida favorita?</option>
+                            <option value="¿Cuál es su color favorito?">¿Cuál es su color favorito?</option>
+                            <option value="¿Cuál es el segundo nombre de tu madre?">¿Cuál es el segundo nombre de tu madre?</option>
+                            <option value="¿En qué ciudad nacieron tus padres?">¿En qué ciudad nacieron tus padres?</option>
+                        </select>
+                        <input type="text" id="a2" class="form-control" placeholder="Escribe tu respuesta" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Tercera pregunta <span class="required">*</span></label>
+                        <select id="q3" class="form-control-select" required>
+                            <option value="" disabled selected>Selecciona una pregunta</option>
+                            <option value="¿Cuál es el país donde nació?">¿Cuál es el país donde nació?</option>
+                            <option value="¿Cuál es su comida favorita?">¿Cuál es su comida favorita?</option>
+                            <option value="¿Cuál es su color favorito?">¿Cuál es su color favorito?</option>
+                            <option value="¿Cuál es el segundo nombre de tu madre?">¿Cuál es el segundo nombre de tu madre?</option>
+                            <option value="¿En qué ciudad nacieron tus padres?">¿En qué ciudad nacieron tus padres?</option>
+                        </select>
+                        <input type="text" id="a3" class="form-control" placeholder="Escribe tu respuesta" required>
+                    </div>
+
+                    <div class="button-group">
+                        <button type="submit" class="btn-acceso">Confirmar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="../js/preguntas-seguridad.js"></script>
+</body>
+</html>

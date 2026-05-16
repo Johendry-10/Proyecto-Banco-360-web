@@ -1,0 +1,368 @@
+/* =========================================
+   1. VARIABLES GLOBALES Y RESETEO
+   (Aplica a todas las pantallas)
+========================================= */
+:root {
+    --primary-color: #ffb703; /* Color amarillo principal (Botones, bordes activos) */
+    --primary-hover: #fb8500; /* Color amarillo oscuro al pasar el mouse */
+    --text-light: #ffffff;    /* Color de texto blanco */
+    --text-dark: #333333;     /* Color de texto oscuro (para el texto dentro del botón) */
+    --glass-bg: rgba(25, 25, 35, 0.55); /* Fondo semitransparente de la tarjeta */
+    --glass-border: rgba(255, 255, 255, 0.15); /* Borde sutil de la tarjeta */
+}
+
+/* Quita márgenes por defecto y aplica la fuente a todo */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Fondo general de la página (La imagen de la reunión) */
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../assets/images/fondo-reunion.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.3); /* Oscurece la imagen para que resalte la tarjeta */
+    background-blend-mode: overlay;
+}
+
+/* =========================================
+   2. ESTRUCTURA PRINCIPAL DE LA TARJETA (GLASSMORPHISM)
+   (Aplica a: Login, Registro, Recuperar, Preguntas)
+========================================= */
+.main-login-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px; 
+}
+
+/* Diseño base de la tarjeta flotante */
+.login-card {
+    position: relative; /* Necesario para que la flecha de "volver" se posicione bien */
+    width: 100%;
+    max-width: 450px; 
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px); /* Efecto de vidrio borroso (Glassmorphism) */
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 40px 30px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    color: var(--text-light);
+}
+
+/* Tarjeta más ancha (Se usa en Preguntas de Seguridad y Olvido de Contraseña) */
+.login-card.wide-card {
+    max-width: 650px;
+    width: 95%;
+}
+
+/* =========================================
+   3. CABECERA E ICONOS DE LA TARJETA
+   (Aplica a todas las pantallas)
+========================================= */
+.login-card-header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* Círculo que contiene el icono de candado, usuario, escudo o llave */
+.lock-icon-container {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Título principal (ej. "Iniciar Sesión", "Registrarse") */
+.login-title {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+/* Flecha para volver hacia atrás (Registro y Olvido de Contraseña) */
+.back-arrow {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    font-size: 1.8rem;
+    color: var(--text-light);
+    text-decoration: none;
+    line-height: 1;
+    transition: all 0.3s ease;
+}
+
+.back-arrow:hover {
+    color: var(--primary-color);
+    transform: translateX(-4px); /* Se mueve un poco a la izquierda al hacer hover */
+}
+
+/* =========================================
+   4. FORMULARIOS E INPUTS
+   (Aplica a todas las pantallas)
+========================================= */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Texto encima de los campos (ej. "Correo Electrónico") */
+.form-label {
+    display: block;
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+    opacity: 0.9;
+}
+
+/* El asterisco rojo para indicar que es obligatorio */
+.required {
+    color: var(--primary-color);
+}
+
+/* Los campos de texto normales (input text, email, password) */
+.form-control {
+    width: 100%;
+    padding: 12px 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: var(--text-light);
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+/* Cuando haces clic en un input para escribir */
+.form-control:focus {
+    border-color: var(--primary-color);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 8px rgba(255, 183, 3, 0.3);
+}
+
+/* El texto de pista dentro del campo vacío */
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Selectores desplegables (Se usa solo en Preguntas de Seguridad) */
+.form-control-select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-light);
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    margin-bottom: 10px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+/* Fondo de las opciones dentro del selector */
+.form-control-select option {
+    background: #111b21;
+    color: var(--text-light);
+}
+
+/* =========================================
+   5. OJITO DE LAS CONTRASEÑAS
+   (Aplica a: Login, Registro, Recuperar)
+========================================= */
+/* Contenedor relativo para poder posicionar el ojito encima del input */
+.password-input-container {
+    position: relative;
+    width: 100%;
+}
+
+/* Le da espacio a la derecha para que el texto no pise el ojito */
+.password-input-container input {
+    width: 100%;
+    padding-right: 40px;
+}
+
+/* El icono del ojo */
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%); /* Lo centra verticalmente perfecto */
+    cursor: pointer;
+    user-select: none;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.toggle-password:hover {
+    opacity: 1;
+}
+
+/* =========================================
+   6. BOTONES PRINCIPALES Y OPCIONES INFERIORES
+   (Aplica principalmente al Login)
+========================================= */
+/* Contenedor del checkbox de "Recordarme" */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 0.85rem;
+}
+
+.remember-me-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+/* El botón grande principal (ACCESO, REGISTRARSE, CONFIRMAR) */
+.btn-acceso {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--primary-color);
+    color: var(--text-dark);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-acceso:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px); /* Se levanta un poquito al pasar el mouse */
+    box-shadow: 0 5px 15px rgba(255, 183, 3, 0.4);
+}
+
+/* Contenedor de enlaces "¿No tienes cuenta?" / "¿Olvidaste la contraseña?" (Solo Login) */
+.login-footer-links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+    font-size: 0.85rem;
+}
+
+.login-footer-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.login-footer-links a:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+/* Crédito de la imagen (por si lo necesitas a futuro) */
+.freepik-credit {
+    text-align: center;
+    font-size: 0.7rem;
+    margin-top: 20px;
+    opacity: 0.5;
+}
+
+/* =========================================
+   7. MENSAJES DE ERROR Y ÉXITO DINÁMICOS
+   (Se activan vía JavaScript)
+========================================= */
+/* El texto en rojo debajo de los inputs o general */
+.error-text {
+    color: #ff4d4d;
+    font-size: 0.8rem;
+    margin-top: 5px;
+    display: block;
+    font-weight: 500;
+}
+
+/* Pone el borde y sombra roja cuando un campo está mal llenado */
+.input-error {
+    border-color: #ff4d4d !important;
+    box-shadow: 0 0 8px rgba(255, 77, 77, 0.3) !important;
+}
+
+/* Selector que está mal llenado (Preguntas de Seguridad) */
+.form-control-select.input-error {
+    border-color: #ff4d4d;
+    background: rgba(255, 77, 77, 0.1);
+}
+
+/* El texto verde cuando el proceso es exitoso (Olvido de contraseña) */
+.success-text {
+    color: #4dff4d;
+    font-size: 0.8rem;
+    margin-top: 5px;
+    display: block;
+    font-weight: 500;
+}
+
+/* =========================================
+   8. SPINNER DE CARGA
+   (Aplica a: Login, Recuperar)
+========================================= */
+/* Contenedor del spinner y el texto "Validando..." */
+.loading-overlay {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* El círculo giratorio */
+.spinner {
+    border: 4px solid rgba(255, 255, 255, 0.1); /* Borde opaco */
+    border-left-color: var(--primary-color);    /* Lado amarillo */
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite; /* Activa la rotación infinita */
+    margin: 0 auto 10px;
+}
+
+/* Animación del spinner dando vueltas */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* =========================================
+   9. RESPONSIVE DESIGN (MÓVILES)
+   (Punto extra del Proyecto: Adaptable a pantallas de hasta 480px)
+========================================= */
+@media (max-width: 480px) {
+    .login-card {
+        padding: 30px 20px;
+        border-radius: 16px;
+    }
+
+    .login-title {
+        font-size: 1.5rem;
+    }
+
+    /* En celulares, los enlaces del footer se ponen uno encima del otro */
+    .login-footer-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+}
