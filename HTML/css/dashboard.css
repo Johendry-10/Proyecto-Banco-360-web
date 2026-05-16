@@ -1,0 +1,241 @@
+:root {
+    --primary-color: #ffb703;
+    --primary-hover: #fb8500;
+    --bg-color: #f4f7f6;
+    --text-dark: #333333;
+    --text-light: #ffffff;
+    --card-bg: #ffffff;
+    --input-green: #2ecc71;
+    --output-red: #e74c3c;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-dark);
+}
+
+.dashboard-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #1a1a24;
+    color: var(--text-light);
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+}
+
+.logo-container {
+    padding: 0 20px 30px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 20px;
+}
+
+.logo-container h2 {
+    color: var(--primary-color);
+}
+
+.main-nav {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    color: #aaa;
+    padding: 15px 20px;
+    text-align: left;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s;
+}
+
+.nav-btn:hover, .nav-btn.active {
+    background-color: rgba(255, 183, 3, 0.1);
+    color: var(--primary-color);
+    border-right: 4px solid var(--primary-color);
+}
+
+.main-content {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+}
+
+.view-section {
+    display: none;
+}
+
+.view-section.active {
+    display: block;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    margin-bottom: 30px;
+}
+
+.balance-card {
+    background: linear-gradient(135deg, #1a1a24 0%, #2c2c3d 100%);
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.balance-display {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.balance-display h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+}
+
+.toggle-eye {
+    cursor: pointer;
+    font-size: 2rem;
+    color: #aaa;
+    transition: color 0.3s;
+}
+
+.toggle-eye:hover {
+    color: white;
+}
+
+.transaction-list {
+    background: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+
+.transaction-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.transaction-item:hover {
+    background-color: #f9f9f9;
+}
+
+.transaction-item:last-child {
+    border-bottom: none;
+}
+
+.tx-info h4 {
+    margin-bottom: 5px;
+}
+
+.tx-date {
+    font-size: 0.85rem;
+    color: #888;
+}
+
+.tx-amount {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.tx-amount.in { color: var(--input-green); }
+.tx-amount.out { color: var(--output-red); }
+
+.filters-container {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.filter-btn {
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background: var(--primary-color);
+    color: var(--text-dark);
+    border-color: var(--primary-color);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 400px;
+    position: relative;
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #888;
+}
+
+.modal-details-grid {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.detail-label {
+    color: #888;
+    font-weight: 500;
+}
+
+.detail-value {
+    font-weight: 600;
+}
