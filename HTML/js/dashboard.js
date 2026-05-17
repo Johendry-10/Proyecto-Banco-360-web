@@ -8,10 +8,7 @@ if (!currentUser) {
 
 document.addEventListener('DOMContentLoaded', () => {
     if (!currentUser) return;
-
-    // =========================================================================
     // 0. APLICAR MODO OSCURO (Evita parpadeos)
-    // =========================================================================
     const currentTheme = localStorage.getItem('banca360_theme') || 'light';
     if (currentTheme === 'dark') {
         document.documentElement.setAttribute('data-theme', 'dark');
@@ -21,9 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.removeAttribute('data-theme');
     }
 
-    // =========================================================================
     // 1. CÁLCULO REAL DEL SALDO BASADO EN EL HISTORIAL (Para que no se borre)
-    // =========================================================================
     let historialGlobal = JSON.parse(localStorage.getItem('banca360_transactions')) || [];
     
     let misTransacciones = historialGlobal.filter(tx => 
@@ -48,9 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('banca360_users', JSON.stringify(listaUsuarios));
     }
 
-    // =========================================================================
+
     // 2. SISTEMA DE PESTAÑAS: RESUMEN VS HISTORIAL
-    // =========================================================================
     const vistasNav = {
         resumen: document.getElementById('view-resumen'),
         historial: document.getElementById('view-historial')
@@ -82,9 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         activarVista('resumen');
     }
 
-    // =========================================================================
     // 3. MOSTRAR/OCULTAR SALDO (El botón del ojito)
-    // =========================================================================
     const balanceAmountElement = document.getElementById('balance-amount');
     const toggleBalanceBtn = document.getElementById('toggle-balance');
 
@@ -102,9 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // =========================================================================
     // 4. RENDERIZAR HISTORIAL EN PANTALLA Y ACTIVAR FILTROS
-    // =========================================================================
     const recentList = document.getElementById('recent-transactions-list');
     const allList = document.getElementById('all-transactions-list');
 
@@ -175,9 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // =========================================================================
     // 5. VENTANA MODAL DE DETALLES
-    // =========================================================================
     const modal = document.getElementById('transaction-modal');
     const modalDetails = document.getElementById('modal-details');
     const closeModalBtn = document.getElementById('close-modal');
@@ -204,9 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target === modal) modal.style.display = 'none';
     });
 
-    // =========================================================================
     // 6. NAVEGACIÓN LATERAL Y CERRAR SESIÓN
-    // =========================================================================
     document.getElementById('nav-logout')?.addEventListener('click', () => {
         localStorage.removeItem('banca360_active_user');
         window.location.href = '../index.html';
