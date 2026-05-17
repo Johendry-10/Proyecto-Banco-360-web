@@ -75,12 +75,19 @@ document.addEventListener('DOMContentLoaded', () => {
         activarVista('resumen');
     }
 
-    // 3. MOSTRAR/OCULTAR SALDO
+    // ==========================================================================
+    // 3. MOSTRAR/OCULTAR SALDO (CORREGIDO PARA QUE NO SALGA $0.00 INICIALMENTE)
+    // ==========================================================================
     const balanceAmountElement = document.getElementById('balance-amount');
     const toggleBalanceBtn = document.getElementById('toggle-balance');
 
     if (toggleBalanceBtn && balanceAmountElement) {
         let saldoVisible = false;
+        
+        // Forzamos a que inicie oculto correctamente apenas carga la página
+        balanceAmountElement.textContent = '***';
+        toggleBalanceBtn.textContent = 'visibility_off';
+
         toggleBalanceBtn.addEventListener('click', () => {
             saldoVisible = !saldoVisible;
             if (saldoVisible) {
@@ -221,7 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const navButtons = document.querySelectorAll('.nav-btn');
         navButtons.forEach(btn => {
             btn.addEventListener('click', () => {
-                if (window.innerWidth <= 992) { // Cambiado a 992px para asegurar cobertura en tablets y móviles
+                if (window.innerWidth <= 992) { 
                     sidebar.classList.remove('active-mobile');
                     sidebarOverlay.classList.remove('active');
                 }
