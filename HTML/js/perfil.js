@@ -9,7 +9,7 @@ if (!currentUser) {
 document.addEventListener('DOMContentLoaded', () => {
     if (!currentUser) return;
 
-    // 1. DEL MODO OSCURO
+    // 1. MODO OSCURO
     const themeBtnProfile = document.getElementById('toggle-theme-profile');
     
     function aplicarTema(tema) {
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. CARGA ULTRA-ROBUSTA DE DATOS
+    // 2. CARGA DE DATOS AL PERFIL
     const perfilNombre = document.getElementById('perfil-nombre');
     const perfilCorreo = document.getElementById('perfil-correo');
     const perfilCedula = document.getElementById('perfil-cedula');
@@ -106,7 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
         btnCancelPassword.addEventListener('click', () => modalPassword.style.display = 'none');
     }
 
-    // Guardar Teléfono
     if (btnConfirmTelefono) {
         btnConfirmTelefono.addEventListener('click', () => {
             const nuevoTel = inputNuevoTelefono ? inputNuevoTelefono.value.trim() : '';
@@ -127,7 +126,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Guardar Contraseña
     if (btnConfirmPassword) {
         btnConfirmPassword.addEventListener('click', () => {
             const nuevaPass = inputNuevaPassword ? inputNuevaPassword.value : '';
@@ -162,7 +160,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Mostrar/Ocultar Contraseña visualmente 
     const btnTogglePass = document.getElementById('toggle-password');
     if (btnTogglePass && perfilPassword) {
         btnTogglePass.addEventListener('click', () => {
@@ -176,12 +173,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. ENRUTADORES DE NAVEGACIÓN 
+    // 4. RUTAS DEL MENÚ
     document.getElementById('nav-resumen')?.addEventListener('click', () => window.location.href = 'dashboard.html');
-    
-    // Al pulsar historial en el perfil, pasamos un parámetro por la URL
     document.getElementById('nav-historial')?.addEventListener('click', () => window.location.href = 'dashboard.html?view=historial');
-    
     document.getElementById('nav-pagomovil')?.addEventListener('click', () => window.location.href = 'pagomovil.html');
     document.getElementById('nav-transferencia')?.addEventListener('click', () => window.location.href = 'transferencias.html');
     document.getElementById('nav-deposito')?.addEventListener('click', () => window.location.href = 'depositos.html');
@@ -195,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================================================
-    // 5. NUEVA LÓGICA DEL MENÚ HAMBURGUESA (RESPONSIVE) AÑADIDA
+    // 5. EVENTOS DEL MENÚ HAMBURGUESA
     // ==========================================================================
     const menuToggleBtn = document.getElementById('menu-toggle');
     const sidebar = document.getElementById('sidebar');
@@ -207,13 +201,13 @@ document.addEventListener('DOMContentLoaded', () => {
             sidebarOverlay.classList.toggle('active');
         }
 
-        // Abrir/Cerrar al tocar la hamburguesa
+        // Al tocar las tres rayas
         menuToggleBtn.addEventListener('click', toggleMenu);
         
-        // Cerrar al tocar el fondo oscuro
+        // Al tocar el fondo oscuro exterior
         sidebarOverlay.addEventListener('click', toggleMenu);
 
-        // Cerrar el menú automáticamente al hacer clic en un botón de navegación
+        // Si se elige una opción, cerrar menú automáticamente
         const navButtons = document.querySelectorAll('.nav-btn, .profile-btn');
         navButtons.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -226,7 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Función global para mostrar contraseñas dentro de los modales
+// Función global de modales
 window.toggleModalPasswordVisibility = function(inputId, iconElement) {
     const input = document.getElementById(inputId);
     if (input) {
