@@ -9,9 +9,7 @@ if (!currentUser) {
 document.addEventListener('DOMContentLoaded', () => {
     if (!currentUser) return;
 
-    // =========================================================================
-    // 1. CORRECCIÓN ABSOLUTA DEL MODO OSCURO
-    // =========================================================================
+    // 1. DEL MODO OSCURO
     const themeBtnProfile = document.getElementById('toggle-theme-profile');
     
     function aplicarTema(tema) {
@@ -41,9 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // =========================================================================
     // 2. CARGA ULTRA-ROBUSTA DE DATOS
-    // =========================================================================
     const perfilNombre = document.getElementById('perfil-nombre');
     const perfilCorreo = document.getElementById('perfil-correo');
     const perfilCedula = document.getElementById('perfil-cedula');
@@ -76,9 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
         perfilSaludo.textContent = `¡Hola, ${nombreUsuario.split(' ')[0]}!`;
     }
 
-    // =========================================================================
     // 3. MODALES DE EDICIÓN
-    // =========================================================================
     const modalTelefono = document.getElementById('modal-edit-telefono');
     const modalPassword = document.getElementById('modal-edit-password');
     const btnEditTelefono = document.getElementById('btnEditTelefono');
@@ -168,10 +162,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // =========================================================================
-    // Mostrar/Ocultar Contraseña visualmente (¡CORREGIDO AQUÍ!)
-    // =========================================================================
-    const btnTogglePass = document.getElementById('toggle-password'); // Se corrigió el ID para que coincida con tu HTML
+    // Mostrar/Ocultar Contraseña visualmente 
+    const btnTogglePass = document.getElementById('toggle-password');
     if (btnTogglePass && perfilPassword) {
         btnTogglePass.addEventListener('click', () => {
             if (perfilPassword.type === 'password') {
@@ -184,9 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // =========================================================================
-    // 4. ENRUTADORES DE NAVEGACIÓN (CON TRUCO PARA EL HISTORIAL)
-    // =========================================================================
+    // 4. ENRUTADORES DE NAVEGACIÓN 
     document.getElementById('nav-resumen')?.addEventListener('click', () => window.location.href = 'dashboard.html');
     
     // Al pulsar historial en el perfil, pasamos un parámetro por la URL
