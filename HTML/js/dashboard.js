@@ -44,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('banca360_users', JSON.stringify(listaUsuarios));
     }
 
-
     // 2. SISTEMA DE PESTAÑAS: RESUMEN VS HISTORIAL
     const vistasNav = {
         resumen: document.getElementById('view-resumen'),
@@ -199,7 +198,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('nav-transferencia')?.addEventListener('click', () => window.location.href = 'transferencias.html');
     document.getElementById('nav-deposito')?.addEventListener('click', () => window.location.href = 'depositos.html');
 
+    // ==========================================================================
     // 7. LÓGICA DEL MENÚ HAMBURGUESA (RESPONSIVE)
+    // ==========================================================================
     const menuToggleBtn = document.getElementById('menu-toggle');
     const sidebar = document.getElementById('sidebar');
     const sidebarOverlay = document.getElementById('sidebar-overlay');
@@ -216,11 +217,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // Cerrar al tocar el fondo oscuro
         sidebarOverlay.addEventListener('click', toggleMenu);
 
-        // Cerrar el menú automáticamente al hacer clic en un botón de navegación (en móviles)
+        // Cerrar el menú automáticamente al hacer clic en un botón de navegación
         const navButtons = document.querySelectorAll('.nav-btn');
         navButtons.forEach(btn => {
             btn.addEventListener('click', () => {
-                if (window.innerWidth <= 768) {
+                if (window.innerWidth <= 992) { // Cambiado a 992px para asegurar cobertura en tablets y móviles
                     sidebar.classList.remove('active-mobile');
                     sidebarOverlay.classList.remove('active');
                 }
