@@ -5,8 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Banca 360 UCAB - Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="../css/dashboard.css">
 </head>
 <body>
-    <h1>Aquí va el dashboard</h1>
+    <div class="dashboard-layout">
+        <aside class="sidebar">
+            <div class="logo-container">
+                <h2>Banca 360</h2>
+            </div>
+            <nav class="main-nav">
+                <button class="nav-btn active" id="nav-resumen">
+                    <span class="material-symbols-outlined">home</span> Resumen
+                </button>
+                <button class="nav-btn" id="nav-historial">
+                    <span class="material-symbols-outlined">receipt_long</span> Historial
+                </button>
+                <button class="nav-btn" id="nav-logout" style="margin-top: auto;">
+                    <span class="material-symbols-outlined">logout</span> Salir
+                </button>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <section id="view-resumen" class="view-section active">
+                <h1>Resumen de Cuenta</h1>
+                
+                <div class="balance-card">
+                    <p>Saldo Actual</p>
+                    <div class="balance-display">
+                        <h2 id="balance-amount">$0.00</h2>
+                        <span class="material-symbols-outlined toggle-eye" id="toggle-balance">visibility</span>
+                    </div>
+                </div>
+
+                <div class="recent-transactions-container">
+                    <h3>Últimos Movimientos</h3>
+                    <div class="transaction-list" id="recent-transactions-list">
+                    </div>
+                </div>
+            </section>
+
+            <section id="view-historial" class="view-section">
+                <h1>Historial de Movimientos</h1>
+                
+                <div class="filters-container">
+                    <button class="filter-btn active" data-filter="all">Todos</button>
+                    <button class="filter-btn" data-filter="in">Solo Entradas</button>
+                    <button class="filter-btn" data-filter="out">Solo Salidas</button>
+                </div>
+
+                <div class="transaction-list full-history" id="all-transactions-list">
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="transaction-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-modal">&times;</span>
+            <h2>Detalle de Transacción</h2>
+            <div id="modal-details" class="modal-details-grid">
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/transacciones.js"></script>
+    <script src="../js/dashboard.js"></script>
 </body>
 </html>
