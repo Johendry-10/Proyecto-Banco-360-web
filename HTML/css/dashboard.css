@@ -2,17 +2,15 @@
    1. VARIABLES Y CONFIGURACIÓN GLOBAL
    ========================================================================== */
 
-/* Reseteo básico para que todos los navegadores se comporten igual */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif; /* Fuente principal del proyecto */
+    font-family: 'Poppins', sans-serif; 
 }
 
-/* Colores de fondo y texto generales de la página */
 body {
-    background-color: #f4f7f6; /* Fondo gris claro */
+    background-color: #f4f7f6; 
     color: #333;
 }
 
@@ -20,20 +18,19 @@ body {
    2. ESTRUCTURA PRINCIPAL (LAYOUT)
    ========================================================================== */
 
-/* Contenedor principal que divide la pantalla en 2 columnas (Menú y Contenido) */
 .dashboard-layout {
     display: flex;
-    height: 100vh; /* Ocupa el 100% del alto de la pantalla */
-    overflow: hidden; /* Evita scroll en la página completa */
+    height: 100vh; 
+    overflow: hidden; 
 }
 
 /* ==========================================================================
    3. BARRA LATERAL (SIDEBAR)
    ========================================================================== */
 .sidebar {
-    width: 250px; /* Ancho fijo del menú */
+    width: 250px; 
     background-color: #ffffff;
-    box-shadow: 2px 0 10px rgba(0,0,0,0.05); /* Sombra sutil hacia la derecha */
+    box-shadow: 2px 0 10px rgba(0,0,0,0.05); 
     display: flex;
     flex-direction: column;
     padding: 20px 0;
@@ -55,14 +52,13 @@ body {
     display: flex;
     flex-direction: column;
     padding: 0 15px;
-    flex-grow: 1; /* Permite que el menú ocupe el espacio disponible */
+    flex-grow: 1; 
 }
 
-/* Diseño de los botones del menú lateral */
 .nav-btn {
     display: flex;
     align-items: center;
-    gap: 10px; /* Espacio entre el ícono y el texto */
+    gap: 10px; 
     padding: 12px 15px;
     background: none;
     border: none;
@@ -71,7 +67,7 @@ body {
     font-size: 16px;
     color: #666;
     text-align: left;
-    transition: all 0.3s ease; /* Animación suave al pasar el mouse */
+    transition: all 0.3s ease; 
     margin-bottom: 5px;
 }
 
@@ -80,7 +76,6 @@ body {
     color: #3498db;
 }
 
-/* Estilo para el botón del menú que está activo (seleccionado) */
 .nav-btn.active {
     background-color: #e3f2fd;
     color: #1976d2;
@@ -91,18 +86,16 @@ body {
    4. ÁREA DE CONTENIDO PRINCIPAL
    ========================================================================== */
 .main-content {
-    flex-grow: 1; /* Ocupa todo el ancho sobrante a la derecha del menú */
+    flex-grow: 1; 
     padding: 30px 40px;
-    overflow-y: auto; /* Permite hacer scroll solo en esta área si hay mucho contenido */
+    overflow-y: auto; 
 }
 
-/* Las secciones de "Resumen" e "Historial" se ocultan por defecto */
 .view-section {
     display: none;
-    animation: fadeIn 0.4s ease; /* Efecto de aparición suave */
+    animation: fadeIn 0.4s ease; 
 }
 
-/* Solo se muestra la sección que tenga la clase 'active' */
 .view-section.active {
     display: block;
 }
@@ -113,7 +106,6 @@ h1 {
     color: #2c3e50;
 }
 
-/* Animación para suavizar el cambio entre pantallas */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
@@ -123,7 +115,7 @@ h1 {
    5. TARJETA DE SALDO (RESUMEN)
    ========================================================================== */
 .balance-card {
-    background: linear-gradient(135deg, #1976d2, #1565c0); /* Fondo degradado azul */
+    background: linear-gradient(135deg, #1976d2, #1565c0); 
     color: white;
     padding: 25px 30px;
     border-radius: 15px;
@@ -175,7 +167,6 @@ h1 {
     overflow: hidden;
 }
 
-/* Fila individual de cada transacción */
 .transaction-item {
     display: flex;
     justify-content: space-between;
@@ -205,18 +196,17 @@ h1 {
     color: #888;
 }
 
-/* Colores condicionales para los montos */
 .tx-amount {
     font-weight: 600;
     font-size: 16px;
 }
 
 .tx-amount.in {
-    color: #2e7d32; /* Verde para entradas */
+    color: #2e7d32; 
 }
 
 .tx-amount.out {
-    color: #d32f2f; /* Rojo para salidas */
+    color: #d32f2f; 
 }
 
 /* ==========================================================================
@@ -253,13 +243,13 @@ h1 {
    8. VENTANA MODAL (DETALLES DE TRANSACCIÓN)
    ========================================================================== */
 .modal {
-    display: none; /* Oculto por defecto, se activa con JavaScript */
+    display: none; 
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
+    background-color: rgba(0, 0, 0, 0.5); 
     z-index: 1000;
     justify-content: center;
     align-items: center;
@@ -273,7 +263,7 @@ h1 {
     max-width: 450px;
     position: relative;
     box-shadow: 0 5px 25px rgba(0,0,0,0.2);
-    animation: slideDown 0.3s ease; /* Efecto de entrada desde arriba */
+    animation: slideDown 0.3s ease; 
 }
 
 @keyframes slideDown {
@@ -303,7 +293,6 @@ h1 {
     padding-bottom: 10px;
 }
 
-/* Grilla para mostrar los datos dentro del modal de forma ordenada */
 .modal-details-grid {
     display: flex;
     flex-direction: column;
@@ -323,9 +312,16 @@ h1 {
 
 .detail-value {
     font-weight: 600;
+    color: #333;
+    text-align: right;
 }
 
-/* Estilos Compartidos de Perfil */
+.detail-value.in { color: #2e7d32; font-weight: 600; }
+.detail-value.out { color: #d32f2f; font-weight: 600; }
+
+/* ==========================================================================
+   9. ESTILOS COMPARTIDOS DE PERFIL
+   ========================================================================== */
 .profile-nav-container {
     text-align: center;
     padding-bottom: 20px;
@@ -538,11 +534,3 @@ h1 {
 .input-error {
     border-color: red !important;
 }
-    font-weight: 500;
-    color: #333;
-    text-align: right;
-}
-
-/* Asegura que el monto en el modal también respete los colores verde/rojo */
-.detail-value.in { color: #2e7d32; font-weight: 600; }
-.detail-value.out { color: #d32f2f; font-weight: 600; }
