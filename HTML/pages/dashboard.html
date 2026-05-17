@@ -71,27 +71,27 @@
         <section id="view-transferencias" class="view-section" style="display: none;">
                 <h1>Transferencias</h1>
                 
-                <div class="balance-card" style="padding: 30px; max-width: 600px; margin-top: 20px;">
+                <div class="balance-card" style="padding: 30px; margin-top: 20px; width: 100%;">
                     <form id="form-transferencias">
-                        <div class="form-group-modal" style="margin-bottom: 20px;">
-                            <label>Cuenta destino <span class="required" style="color: var(--error-color);">*</span></label>
-                            <input type="text" id="tx-dest" class="modal-input" placeholder="Ej: 04141234567 o correo" required>
+                        <div class="form-group-modal">
+                            <label>Cuenta o Correo del Beneficiario <span class="required" style="color: var(--error-color);">*</span></label>
+                            <input type="text" id="tx-dest" class="modal-input" placeholder="Ingrese el correo o número de cuenta" required>
                         </div>
                         
-                        <div class="form-group-modal" style="margin-bottom: 20px;">
-                            <label>Monto a transferir <span class="required" style="color: var(--error-color);">*</span></label>
+                        <div class="form-group-modal">
+                            <label>Importe a Transferir ($) <span class="required" style="color: var(--error-color);">*</span></label>
                             <input type="number" id="tx-amount" class="modal-input" placeholder="0.00" min="0.01" step="0.01" required>
                         </div>
                         
-                        <div class="form-group-modal" style="margin-bottom: 20px;">
-                            <label>Concepto de la transferencia <span class="required" style="color: var(--error-color);">*</span></label>
-                            <input type="text" id="tx-concept" class="modal-input" placeholder="Motivo de pago" required>
+                        <div class="form-group-modal">
+                            <label>Concepto de la Operación <span class="required" style="color: var(--error-color);">*</span></label>
+                            <input type="text" id="tx-concept" class="modal-input" placeholder="Ej: Pago de mensualidad, honorarios..." required>
                         </div>
                         
                         <span id="tx-error" style="display: none; color: var(--error-color); font-size: 0.85rem; margin-bottom: 15px; display: block;"></span>
                         
-                        <div class="modal-actions" style="justify-content: flex-start; margin-top: 30px;">
-                            <button type="submit" class="btn-modal-confirm" style="width: auto; padding: 10px 30px;">Procesar</button>
+                        <div class="modal-actions">
+                            <button type="submit" class="btn-modal-confirm" style="width: auto; padding: 10px 30px;">Procesar Transferencia</button>
                             <button type="button" class="btn-modal-cancel btn-volver-resumen" style="width: auto; padding: 10px 30px;">Cancelar</button>
                         </div>
                     </form>
@@ -101,27 +101,27 @@
             <section id="view-pagomovil" class="view-section" style="display: none;">
                 <h1>Pago Móvil</h1>
                 
-                <div class="balance-card" style="padding: 30px; max-width: 600px; margin-top: 20px;">
+                <div class="balance-card" style="padding: 30px; margin-top: 20px; width: 100%;">
                     <form id="form-pagomovil">
-                        <div class="form-group-modal" style="margin-bottom: 20px;">
-                            <label>Teléfono destino <span class="required" style="color: var(--error-color);">*</span></label>
+                        <div class="form-group-modal">
+                            <label>Número Celular del Beneficiario <span class="required" style="color: var(--error-color);">*</span></label>
                             <input type="tel" id="pm-phone" class="modal-input" placeholder="Ej: 04141234567" required>
                         </div>
                         
-                        <div class="form-group-modal" style="margin-bottom: 20px;">
-                            <label>Cédula destino <span class="required" style="color: var(--error-color);">*</span></label>
-                            <input type="text" id="pm-cedula" class="modal-input" placeholder="Ej: V-12345678" required>
+                        <div class="form-group-modal">
+                            <label>Documento de Identidad <span class="required" style="color: var(--error-color);">*</span></label>
+                            <input type="text" id="pm-cedula" class="modal-input" placeholder="Ej: V-12345678 o E-87654321" required>
                         </div>
                         
-                        <div class="form-group-modal" style="margin-bottom: 20px;">
-                            <label>Monto a transferir <span class="required" style="color: var(--error-color);">*</span></label>
+                        <div class="form-group-modal">
+                            <label>Importe a Enviar ($) <span class="required" style="color: var(--error-color);">*</span></label>
                             <input type="number" id="pm-amount" class="modal-input" placeholder="0.00" min="0.01" step="0.01" required>
                         </div>
                         
                         <span id="pm-error" style="display: none; color: var(--error-color); font-size: 0.85rem; margin-bottom: 15px; display: block;"></span>
                         
-                        <div class="modal-actions" style="justify-content: flex-start; margin-top: 30px;">
-                            <button type="submit" class="btn-modal-confirm" style="width: auto; padding: 10px 30px;">Procesar</button>
+                        <div class="modal-actions">
+                            <button type="submit" class="btn-modal-confirm" style="width: auto; padding: 10px 30px;">Emitir Pago Móvil</button>
                             <button type="button" class="btn-modal-cancel btn-volver-resumen" style="width: auto; padding: 10px 30px;">Cancelar</button>
                         </div>
                     </form>
@@ -131,20 +131,20 @@
             <section id="view-deposito" class="view-section" style="display: none;">
                 <h1>Depósito</h1>
                 
-                <div class="balance-card" style="padding: 30px; max-width: 600px; margin-top: 20px;">
+                <div class="balance-card" style="padding: 30px; margin-top: 20px; width: 100%;">
                     <form id="form-deposito">
-                        <div class="form-group-modal" style="margin-bottom: 20px;">
-                            <label>Monto a depositar <span class="required" style="color: var(--error-color);">*</span></label>
+                        <div class="form-group-modal">
+                            <label>Importe a Depositar ($) <span class="required" style="color: var(--error-color);">*</span></label>
                             <input type="number" id="dp-amount" class="modal-input" placeholder="0.00" min="1" step="0.01" required>
                         </div>
                         
-                        <div class="form-group-modal" style="margin-bottom: 20px;">
-                            <label>Referencia / Origen de los fondos <span class="required" style="color: var(--error-color);">*</span></label>
-                            <input type="text" id="dp-reference" class="modal-input" placeholder="Ej: Taquilla, Cajero automático..." required>
+                        <div class="form-group-modal">
+                            <label>Número de Referencia (Voucher) <span class="required" style="color: var(--error-color);">*</span></label>
+                            <input type="text" id="dp-reference" class="modal-input" placeholder="Ingrese el código del recibo o comprobante" required>
                         </div>
                         
-                        <div class="modal-actions" style="justify-content: flex-start; margin-top: 30px;">
-                            <button type="submit" class="btn-modal-confirm" style="width: auto; padding: 10px 30px;">Procesar</button>
+                        <div class="modal-actions">
+                            <button type="submit" class="btn-modal-confirm" style="width: auto; padding: 10px 30px;">Registrar Depósito</button>
                             <button type="button" class="btn-modal-cancel btn-volver-resumen" style="width: auto; padding: 10px 30px;">Cancelar</button>
                         </div>
                     </form>
