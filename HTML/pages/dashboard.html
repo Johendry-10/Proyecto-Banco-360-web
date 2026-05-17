@@ -9,6 +9,12 @@
     <link rel="stylesheet" href="../css/dashboard.css">
 </head>
 <body>
+    <script>
+        if (localStorage.getItem('banca360_theme') === 'dark') {
+            document.body.setAttribute('data-theme', 'dark');
+        }
+    </script>
+
     <div class="dashboard-layout">
         <aside class="sidebar">
             <div class="logo-container">
