@@ -843,9 +843,10 @@ select.modal-input option {
         z-index: 95;
     }
 }
-/* Corrección para que el botón Salir no choque con el borde inferior en móviles */
+
 @media (max-width: 992px) {
     .sidebar .nav-btn#nav-logout {
-        margin-bottom: 35px !important;
+        margin-top: 30px !important; /* Le quita la orden de irse al fondo y lo agrupa cerca del menú */
+        margin-bottom: 80px !important; /* Le da un espacio extra muy generoso por debajo */
     }
 }
