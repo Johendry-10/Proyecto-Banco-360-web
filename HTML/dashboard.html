@@ -10,7 +10,9 @@
 </head>
 <body>
     <div class="dashboard-layout">
-        <aside class="sidebar">
+        <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+        <aside class="sidebar" id="sidebar">
             <div class="logo-container">
                 <h2>Banca 360</h2>
             </div>
@@ -28,8 +30,15 @@
         </aside>
 
         <main class="main-content">
+            <header class="mobile-header">
+                <button id="menu-toggle" class="menu-toggle-btn">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+                <h2 class="mobile-logo">Banca 360</h2>
+            </header>
+
             <section id="view-resumen" class="view-section active">
-                <h1>Resumen de Cuenta</h1>
+                <h1 class="desktop-title">Resumen de Cuenta</h1>
                 
                 <div class="balance-card">
                     <p>Saldo Actual</p>
@@ -47,7 +56,7 @@
             </section>
 
             <section id="view-historial" class="view-section">
-                <h1>Historial de Movimientos</h1>
+                <h1 class="desktop-title">Historial de Movimientos</h1>
                 
                 <div class="filters-container">
                     <button class="filter-btn active" data-filter="all">Todos</button>

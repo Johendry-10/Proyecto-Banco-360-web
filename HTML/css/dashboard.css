@@ -648,3 +648,127 @@ select.modal-input option {
     color: var(--text-main);
     font-weight: 500;
 }
+
+/* ==========================================================================
+   12. RESPONSIVE DESIGN Y MENÚ HAMBURGUESA (MÓVILES Y TABLETS)
+   ========================================================================== */
+
+/* Header móvil oculto por defecto en escritorio */
+.mobile-header {
+    display: none;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.menu-toggle-btn {
+    background: none;
+    border: none;
+    color: var(--text-heading);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.menu-toggle-btn:hover {
+    background-color: var(--hover-bg);
+}
+
+.mobile-logo {
+    color: var(--text-heading);
+    font-size: 1.4rem;
+    margin: 0;
+    font-weight: 600;
+}
+
+/* Fondo oscuro oculto por defecto */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 99;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Reglas específicas para pantallas de menos de 768px (Móviles y Tablets pequeñas) */
+@media (max-width: 768px) {
+    .dashboard-layout {
+        flex-direction: column;
+    }
+
+    /* Mostrar header móvil */
+    .mobile-header {
+        display: flex;
+    }
+
+    /* Ocultar títulos gigantes de escritorio si hay header móvil */
+    .desktop-title {
+        display: none;
+    }
+
+    .main-content {
+        padding: 20px 15px;
+        width: 100%;
+    }
+
+    /* Comportamiento de la barra lateral en móviles */
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        z-index: 100;
+        /* La ocultamos moviéndola hacia la izquierda fuera de la pantalla */
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+
+    /* Clase que se agrega con JS para mostrar el menú */
+    .sidebar.active-mobile {
+        transform: translateX(0);
+    }
+
+    /* Clase que se agrega con JS para mostrar el fondo oscuro */
+    .sidebar-overlay.active {
+        display: block;
+        opacity: 1;
+    }
+
+    /* Ajustes de las tarjetas para que ocupen todo el ancho */
+    .balance-card {
+        width: 100%;
+        min-width: 100%;
+        padding: 20px;
+        margin-bottom: 25px;
+    }
+
+    .balance-display h2 {
+        font-size: 28px; /* Texto más pequeño en la tarjeta */
+    }
+
+    /* Ajuste de transacciones en móvil */
+    .transaction-item {
+        padding: 15px;
+    }
+
+    /* Ajuste de botones de filtro */
+    .filters-container {
+        flex-wrap: wrap; /* Permitir que los botones bajen si no caben */
+    }
+
+    .filter-btn {
+        flex-grow: 1; /* Los botones se estiran parejo */
+        text-align: center;
+    }
+}

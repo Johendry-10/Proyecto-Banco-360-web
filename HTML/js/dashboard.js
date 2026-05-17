@@ -8,6 +8,7 @@ if (!currentUser) {
 
 document.addEventListener('DOMContentLoaded', () => {
     if (!currentUser) return;
+    
     // 0. APLICAR MODO OSCURO (Evita parpadeos)
     const currentTheme = localStorage.getItem('banca360_theme') || 'light';
     if (currentTheme === 'dark') {
@@ -18,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.removeAttribute('data-theme');
     }
 
-    // 1. CÁLCULO REAL DEL SALDO BASADO EN EL HISTORIAL (Para que no se borre)
+    // 1. CÁLCULO REAL DEL SALDO BASADO EN EL HISTORIAL
     let historialGlobal = JSON.parse(localStorage.getItem('banca360_transactions')) || [];
     
     let misTransacciones = historialGlobal.filter(tx => 
@@ -68,7 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (botonesNav.resumen) botonesNav.resumen.addEventListener('click', () => activarVista('resumen'));
     if (botonesNav.historial) botonesNav.historial.addEventListener('click', () => activarVista('historial'));
 
-    // Leer la URL por si venimos del perfil
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('view') === 'historial') {
         activarVista('historial');
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         activarVista('resumen');
     }
 
-    // 3. MOSTRAR/OCULTAR SALDO (El botón del ojito)
+    // 3. MOSTRAR/OCULTAR SALDO
     const balanceAmountElement = document.getElementById('balance-amount');
     const toggleBalanceBtn = document.getElementById('toggle-balance');
 
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. RENDERIZAR HISTORIAL EN PANTALLA Y ACTIVAR FILTROS
+    // 4. RENDERIZAR HISTORIAL
     const recentList = document.getElementById('recent-transactions-list');
     const allList = document.getElementById('all-transactions-list');
 
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function pintarTransacciones(filtro = 'all') {
-        let txFiltradas = [...misTransacciones].reverse(); // Ordenar de más nueva a más vieja
+        let txFiltradas = [...misTransacciones].reverse();
 
         if (recentList) recentList.innerHTML = '';
         if (allList) allList.innerHTML = '';
@@ -132,19 +132,16 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Pintar solo las últimas 3 en el Inicio
         txFiltradas.slice(0, 3).forEach(tx => {
             if (recentList) recentList.innerHTML += generarHTMLTransaccion(tx);
         });
 
-        // Pintar todo en la pestaña "Historial" según el filtro
         txFiltradas.forEach(tx => {
             if (filtro === 'all' || tx.tipo === filtro) {
                 if (allList) allList.innerHTML += generarHTMLTransaccion(tx);
             }
         });
 
-        // Activar el click en cada transacción para abrir el modal
         document.querySelectorAll('.transaction-item').forEach(item => {
             item.addEventListener('click', () => {
                 const txId = item.getAttribute('data-id');
@@ -156,7 +153,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     pintarTransacciones();
 
-    // Botones de filtro dentro de la pestaña Historial
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -192,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target === modal) modal.style.display = 'none';
     });
 
-    // 6. NAVEGACIÓN LATERAL Y CERRAR SESIÓN
+    // 6. NAVEGACIÓN Y CERRAR SESIÓN
     document.getElementById('nav-logout')?.addEventListener('click', () => {
         localStorage.removeItem('banca360_active_user');
         window.location.href = '../index.html';
@@ -202,4 +198,33 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('nav-pagomovil')?.addEventListener('click', () => window.location.href = 'pagomovil.html');
     document.getElementById('nav-transferencia')?.addEventListener('click', () => window.location.href = 'transferencias.html');
     document.getElementById('nav-deposito')?.addEventListener('click', () => window.location.href = 'depositos.html');
+
+    // 7. LÓGICA DEL MENÚ HAMBURGUESA (RESPONSIVE)
+    const menuToggleBtn = document.getElementById('menu-toggle');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebar-overlay');
+
+    if (menuToggleBtn && sidebar && sidebarOverlay) {
+        function toggleMenu() {
+            sidebar.classList.toggle('active-mobile');
+            sidebarOverlay.classList.toggle('active');
+        }
+
+        // Abrir/Cerrar al tocar la hamburguesa
+        menuToggleBtn.addEventListener('click', toggleMenu);
+        
+        // Cerrar al tocar el fondo oscuro
+        sidebarOverlay.addEventListener('click', toggleMenu);
+
+        // Cerrar el menú automáticamente al hacer clic en un botón de navegación (en móviles)
+        const navButtons = document.querySelectorAll('.nav-btn');
+        navButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    sidebar.classList.remove('active-mobile');
+                    sidebarOverlay.classList.remove('active');
+                }
+            });
+        });
+    }
 });
