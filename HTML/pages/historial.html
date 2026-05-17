@@ -3,19 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banca 360 UCAB - Dashboard</title>
+    <title>Banca 360 UCAB - Historial</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="stylesheet" href="../css/dashboard.css">
-    
-    <script>
-        const savedTheme = localStorage.getItem('banca360_theme') || 'light';
-        if (savedTheme === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-        } else {
-            document.documentElement.removeAttribute('data-theme');
-        }
-    </script>
 </head>
 <body>
     <div class="dashboard-layout">
@@ -32,11 +23,11 @@
             </div>
 
             <nav class="main-nav">
-                <button class="nav-btn active" id="nav-resumen">
+                <button class="nav-btn" id="nav-resumen">
                     <span class="material-symbols-outlined">home</span> Menú Principal
                 </button>
                 
-                <button class="nav-btn" id="nav-historial">
+                <button class="nav-btn active" id="nav-historial">
                     <span class="material-symbols-outlined">history</span> Historial
                 </button>
                 
@@ -59,28 +50,10 @@
         </aside>
 
         <main class="main-content">
-            <section id="view-resumen" class="view-section active">
-                <h1>Menú Principal</h1>
-                
-                <div class="balance-card">
-                    <p class="balance-title">Saldo Disponible</p>
-                    <div class="balance-row">
-                        <span class="balance-amount" id="balance-amount">***</span>
-                        <span class="material-symbols-outlined toggle-eye" id="toggle-balance">visibility</span>
-                    </div>
-                </div>
-
-                <div class="recent-transactions-container">
-                    <h3>Últimos Movimientos</h3>
-                    <div class="transaction-list" id="recent-transactions-list">
-                        </div>
-                </div>
-            </section>
-
-            <section id="view-historial" class="view-section">
+            <section id="view-historial" class="view-section" style="display: block;">
                 <h1>Historial de Movimientos</h1>
                 
-                <div class="filters-container" style="margin-bottom: 20px; display: flex; gap: 10px;">
+                <div class="filters-container">
                     <button class="filter-btn active" data-filter="all">Todos</button>
                     <button class="filter-btn" data-filter="in">Solo Entradas</button>
                     <button class="filter-btn" data-filter="out">Solo Salidas</button>
@@ -92,16 +65,7 @@
         </main>
     </div>
 
-    <div id="transaction-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" id="close-modal">&times;</span>
-            <h2>Detalle de Transacción</h2>
-            <div id="modal-details" class="modal-details-grid">
-                </div>
-        </div>
-    </div>
-
     <script src="../js/transacciones.js"></script>
-    <script src="../js/dashboard.js"></script>
+    <script src="../js/historial.js"></script>
 </body>
 </html>

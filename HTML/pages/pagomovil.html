@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banca 360 UCAB - Pago Móvil</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <script>
+        if (localStorage.getItem('banca360_theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
+</head>
+<body>
+    <div class="dashboard-layout">
+        <aside class="sidebar">
+            <div class="logo-container">
+                <h2>Banca 360</h2>
+            </div>
+            
+            <div class="profile-nav-container">
+                <button id="nav-perfil-icon" class="profile-btn" title="Ir a mi perfil" onclick="window.location.href='perfil.html'">
+                    <span class="material-symbols-outlined" style="font-size: 60px;">account_circle</span>
+                    <p>Mi Perfil</p>
+                </button>
+            </div>
+
+            <nav class="main-nav">
+                <button class="nav-btn" id="nav-dashboard" onclick="window.location.href='dashboard.html'">
+                    <span class="material-symbols-outlined">home</span> Menú Principal
+                </button>
+                <button class="nav-btn active" id="nav-pagomovil" onclick="window.location.href='pagomovil.html'">
+                    <span class="material-symbols-outlined">send_to_mobile</span> Pago Móvil
+                </button>
+                <button class="nav-btn" id="nav-transferencia" onclick="window.location.href='transferencias.html'">
+                    <span class="material-symbols-outlined">sync_alt</span> Transferir
+                </button>
+                <button class="nav-btn" id="nav-deposito" onclick="window.location.href='depositos.html'">
+                    <span class="material-symbols-outlined">account_balance</span> Depósito
+                </button>
+                <button class="nav-btn" id="nav-logout" style="margin-top: auto;" onclick="localStorage.removeItem('banca360_active_user'); window.location.href='../index.html';">
+                    <span class="material-symbols-outlined">logout</span> Salir
+                </button>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <section class="view-section active">
+                <h1>Enviar Pago Móvil</h1>
+                
+                <div class="form-container-modal">
+                    <form id="form-pagomovil">
+                        <div class="form-group-modal">
+                            <label>Teléfono del Beneficiario</label>
+                            <input type="text" id="pm-telefono" class="modal-input solo-numeros" placeholder="Ej: 04141234567" maxlength="11" required>
+                        </div>
+
+                        <div class="form-group-modal">
+                            <label>Cédula o RIF</label>
+                            <input type="text" id="pm-cedula" class="modal-input solo-numeros" placeholder="Ej: 12345678" maxlength="9" required>
+                        </div>
+
+                        <div class="form-group-modal">
+                            <label>Banco de Destino</label>
+                            <select id="pm-banco" class="modal-input" required>
+                                <option value="" disabled selected>Seleccione un banco...</option>
+                                <option value="Banesco">Banesco</option>
+                                <option value="Mercantil">Mercantil</option>
+                                <option value="Provincial">Provincial</option>
+                                <option value="Venezuela">Banco de Venezuela</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group-modal">
+                            <label>Monto ($)</label>
+                            <input type="text" id="pm-monto" class="modal-input solo-montos" placeholder="0.00" required>
+                        </div>
+
+                        <p id="pm-msg" style="font-size: 0.85rem; display: none; margin-bottom: 10px; font-weight: 500;"></p>
+                        
+                        <div class="modal-actions">
+                            <button type="button" class="btn-modal-cancel" id="btn-cancel-pm" onclick="window.location.href='dashboard.html'">Cancelar</button>
+                            <button type="submit" class="btn-modal-confirm">Enviar Pago</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../js/tema.js"></script>
+    <script src="../js/validaciones.js"></script>
+    <script src="../js/pagomovil.js"></script>
+</body>
+</html>
