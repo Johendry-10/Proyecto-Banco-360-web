@@ -7,18 +7,25 @@ if (!currentUser) {
 document.addEventListener('DOMContentLoaded', () => {
     if (!currentUser) return;
 
-    // Llamamos a la función en español
     if (typeof inicializarTransacciones === 'function') {
         inicializarTransacciones();
     }
     
     const updatedUser = JSON.parse(localStorage.getItem('banca360_active_user'));
 
+  
     const logoutBtn = document.getElementById('nav-logout');
     if(logoutBtn) {
         logoutBtn.addEventListener('click', () => {
             localStorage.removeItem('banca360_active_user');
             window.location.href = '../index.html';
+        });
+    }
+
+    const navPerfilIcon = document.getElementById('nav-perfil-icon');
+    if (navPerfilIcon) {
+        navPerfilIcon.addEventListener('click', () => {
+            window.location.href = 'perfil.html';
         });
     }
 
@@ -30,20 +37,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalDetails = document.getElementById('modal-details');
     const closeModalBtn = document.getElementById('close-modal');
     
+
     let balanceVisible = true;
     const actualBalance = `$${updatedUser.balance.toFixed(2)}`;
-    balanceAmountElement.textContent = actualBalance;
+    if (balanceAmountElement) balanceAmountElement.textContent = actualBalance;
 
-    toggleBalanceBtn.addEventListener('click', () => {
-        balanceVisible = !balanceVisible;
-        if (balanceVisible) {
-            balanceAmountElement.textContent = actualBalance;
-            toggleBalanceBtn.textContent = 'visibility';
-        } else {
-            balanceAmountElement.textContent = '***';
-            toggleBalanceBtn.textContent = 'visibility_off';
-        }
-    });
+    if (toggleBalanceBtn) {
+        toggleBalanceBtn.addEventListener('click', () => {
+            balanceVisible = !balanceVisible;
+            if (balanceVisible) {
+                balanceAmountElement.textContent = actualBalance;
+                toggleBalanceBtn.textContent = 'visibility';
+            } else {
+                balanceAmountElement.textContent = '***';
+                toggleBalanceBtn.textContent = 'visibility_off';
+            }
+        });
+    }
 
     const navResumen = document.getElementById('nav-resumen');
     const navHistorial = document.getElementById('nav-historial');
@@ -59,15 +69,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (view === 'resumen') {
             navResumen.classList.add('active');
             viewResumen.classList.add('active');
-        } else {
+        } else if (view === 'historial') {
             navHistorial.classList.add('active');
             viewHistorial.classList.add('active');
         }
     }
 
-    navResumen.addEventListener('click', () => switchView('resumen'));
-    navHistorial.addEventListener('click', () => switchView('historial'));
+    if (navResumen) navResumen.addEventListener('click', () => switchView('resumen'));
+    if (navHistorial) navHistorial.addEventListener('click', () => switchView('historial'));
 
+    // Lógica de Renderizado de Transacciones
     function crearElementoTransaccion(txn) {
         const div = document.createElement('div');
         div.className = 'transaction-item';
@@ -85,23 +96,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderizarTransacciones() {
-        // Usamos la función en español para obtener los datos
-        const transaccionesOrdenadas = obtenerTransaccionesOrdenadas(); 
+        if (!recentListElement) return;
         recentListElement.innerHTML = '';
-        transaccionesOrdenadas.slice(0, 3).forEach(txn => {
-            recentListElement.appendChild(crearElementoTransaccion(txn));
-        });
+        if (updatedUser.transactions) {
+            const txs = [...updatedUser.transactions].reverse();
+            txs.slice(0, 3).forEach(txn => {
+                recentListElement.appendChild(crearElementoTransaccion(txn));
+            });
+        }
         renderizarTransaccionesFiltradas('all');
     }
 
     function renderizarTransaccionesFiltradas(filtro) {
+        if (!allListElement) return;
         allListElement.innerHTML = '';
-        const transaccionesOrdenadas = obtenerTransaccionesOrdenadas();
-        transaccionesOrdenadas.forEach(txn => {
-            if (filtro === 'all' || txn.type === filtro) {
-                allListElement.appendChild(crearElementoTransaccion(txn));
-            }
-        });
+        if (updatedUser.transactions) {
+            const txs = [...updatedUser.transactions].reverse();
+            txs.forEach(txn => {
+                if (filtro === 'all' || txn.type === filtro) {
+                    allListElement.appendChild(crearElementoTransaccion(txn));
+                }
+            });
+        }
     }
 
     document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -113,6 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function abrirModal(txn) {
+        if (!modalDetails || !modal) return;
         modalDetails.innerHTML = `
             <div class="detail-row"><span class="detail-label">Referencia</span><span class="detail-value">${txn.id}</span></div>
             <div class="detail-row"><span class="detail-label">Tipo</span><span class="detail-value">${txn.type === 'in' ? 'Entrada' : 'Salida'}</span></div>
@@ -123,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.style.display = 'flex';
     }
 
-    closeModalBtn.addEventListener('click', () => modal.style.display = 'none');
+    if (closeModalBtn) closeModalBtn.addEventListener('click', () => modal.style.display = 'none');
     window.addEventListener('click', (e) => {
         if (e.target === modal) modal.style.display = 'none';
     });

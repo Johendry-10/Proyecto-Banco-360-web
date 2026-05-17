@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banca 360 UCAB - Mi Perfil</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <aside class="sidebar">
+            <div class="logo-container">
+                <h2>Banca 360</h2>
+            </div>
+            
+            <div class="profile-nav-container">
+                <button id="nav-perfil-icon" class="profile-btn active-profile" title="Mi perfil">
+                    <span class="material-symbols-outlined" style="font-size: 60px;">account_circle</span>
+                    <p>Mi Perfil</p>
+                </button>
+            </div>
+
+            <nav class="main-nav">
+                <button class="nav-btn" id="nav-resumen">
+                    <span class="material-symbols-outlined">home</span> Resumen
+                </button>
+                <button class="nav-btn" id="nav-historial">
+                    <span class="material-symbols-outlined">receipt_long</span> Historial
+                </button>
+                <button class="nav-btn" id="nav-logout" style="margin-top: auto;">
+                    <span class="material-symbols-outlined">logout</span> Salir
+                </button>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <section id="view-perfil" class="view-section active">
+                <h1 id="perfil-saludo">Mi Perfil</h1>
+                <div class="profile-card">
+                    
+                    <div class="form-group-profile">
+                        <label>Nombre Completo</label>
+                        <input type="text" id="perfil-nombre" class="profile-input" readonly>
+                    </div>
+                    
+                    <div class="form-group-profile">
+                        <label>Correo Electrónico</label>
+                        <input type="email" id="perfil-correo" class="profile-input" readonly>
+                    </div>
+                    
+                    <div class="form-group-profile">
+                        <label>Cédula de Identidad</label>
+                        <input type="text" id="perfil-cedula" class="profile-input" readonly>
+                    </div>
+                    
+                    <div class="form-group-profile">
+                        <label>Teléfono</label>
+                        <div class="action-profile-container">
+                            <input type="text" id="perfil-telefono" class="profile-input" readonly>
+                            <span class="material-symbols-outlined edit-icon-profile" id="btnEditTelefono">edit</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group-profile">
+                        <label>Contraseña</label>
+                        <div class="action-profile-container">
+                            <input type="password" id="perfil-password" class="profile-input" readonly>
+                            <div class="icons-wrapper-profile">
+                                <span class="material-symbols-outlined toggle-pass-profile" id="btnTogglePassProfile">visibility</span>
+                                <span class="material-symbols-outlined edit-icon-profile" id="btnEditPassword">edit</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="modal-edit-telefono" class="modal">
+        <div class="modal-content-edit">
+            <h2>Modificar Teléfono</h2>
+            <div class="form-group-modal">
+                <label>Nuevo número de teléfono</label>
+                <input type="text" id="modal-nuevo-telefono" class="modal-input">
+                <span class="error-message" id="modal-telefono-error" style="display: none; color: red; font-size: 0.8rem; margin-top: 5px;"></span>
+            </div>
+            <div class="modal-actions">
+                <button id="btnCancelTelefono" class="btn-modal-cancel">Cancelar</button>
+                <button id="btnConfirmTelefono" class="btn-modal-confirm">Confirmar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-edit-password" class="modal">
+        <div class="modal-content-edit">
+            <h2>Modificar Contraseña</h2>
+            
+            <div class="form-group-modal">
+                <label>Nueva contraseña</label>
+                <div class="action-modal-container">
+                    <input type="password" id="modal-nueva-password" class="modal-input">
+                    <span class="material-symbols-outlined toggle-pass-modal" onclick="toggleModalPasswordVisibility('modal-nueva-password', this)">visibility</span>
+                </div>
+                <span class="error-message" id="modal-password-error" style="display: none; color: red; font-size: 0.8rem; margin-top: 5px;"></span>
+            </div>
+
+            <div class="form-group-modal">
+                <label>Confirmar contraseña</label>
+                <div class="action-modal-container">
+                    <input type="password" id="modal-confirmar-password" class="modal-input">
+                    <span class="material-symbols-outlined toggle-pass-modal" onclick="toggleModalPasswordVisibility('modal-confirmar-password', this)">visibility</span>
+                </div>
+                <span class="error-message" id="modal-confirm-password-error" style="display: none; color: red; font-size: 0.8rem; margin-top: 5px;"></span>
+            </div>
+
+            <div class="modal-actions">
+                <button id="btnCancelPassword" class="btn-modal-cancel">Cancelar</button>
+                <button id="btnConfirmPassword" class="btn-modal-confirm">Confirmar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/perfil.js"></script>
+</body>
+</html>
