@@ -193,6 +193,37 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = '../index.html';
         });
     }
+
+    // ==========================================================================
+    // 5. NUEVA LÓGICA DEL MENÚ HAMBURGUESA (RESPONSIVE) AÑADIDA
+    // ==========================================================================
+    const menuToggleBtn = document.getElementById('menu-toggle');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebar-overlay');
+
+    if (menuToggleBtn && sidebar && sidebarOverlay) {
+        function toggleMenu() {
+            sidebar.classList.toggle('active-mobile');
+            sidebarOverlay.classList.toggle('active');
+        }
+
+        // Abrir/Cerrar al tocar la hamburguesa
+        menuToggleBtn.addEventListener('click', toggleMenu);
+        
+        // Cerrar al tocar el fondo oscuro
+        sidebarOverlay.addEventListener('click', toggleMenu);
+
+        // Cerrar el menú automáticamente al hacer clic en un botón de navegación
+        const navButtons = document.querySelectorAll('.nav-btn, .profile-btn');
+        navButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (window.innerWidth <= 992) {
+                    sidebar.classList.remove('active-mobile');
+                    sidebarOverlay.classList.remove('active');
+                }
+            });
+        });
+    }
 });
 
 // Función global para mostrar contraseñas dentro de los modales
