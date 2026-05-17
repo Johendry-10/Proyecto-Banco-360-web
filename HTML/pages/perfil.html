@@ -9,6 +9,12 @@
     <link rel="stylesheet" href="../css/dashboard.css">
 </head>
 <body>
+    <script>
+        if (localStorage.getItem('banca360_theme') === 'dark') {
+            document.body.setAttribute('data-theme', 'dark');
+        }
+    </script>
+
     <div class="dashboard-layout">
         <aside class="sidebar">
             <div class="logo-container">
@@ -29,6 +35,11 @@
                 <button class="nav-btn" id="nav-historial">
                     <span class="material-symbols-outlined">receipt_long</span> Historial
                 </button>
+                
+                <button class="nav-btn" id="toggle-theme-profile">
+                    <span class="material-symbols-outlined">dark_mode</span> Modo Oscuro
+                </button>
+
                 <button class="nav-btn" id="nav-logout" style="margin-top: auto;">
                     <span class="material-symbols-outlined">logout</span> Salir
                 </button>

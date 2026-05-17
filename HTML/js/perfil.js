@@ -7,6 +7,33 @@ if (!currentUser) {
 document.addEventListener('DOMContentLoaded', () => {
     if (!currentUser) return;
 
+    // --- LÓGICA DE MODO OSCURO ---
+    const currentTheme = localStorage.getItem('banca360_theme');
+    const themeBtnProfile = document.getElementById('toggle-theme-profile');
+    
+    if (currentTheme === 'dark') {
+        document.body.setAttribute('data-theme', 'dark');
+        if (themeBtnProfile) {
+            themeBtnProfile.innerHTML = '<span class="material-symbols-outlined">light_mode</span> Modo Claro';
+        }
+    }
+
+    if (themeBtnProfile) {
+        themeBtnProfile.addEventListener('click', () => {
+            const isDark = document.body.getAttribute('data-theme') === 'dark';
+            if (isDark) {
+                document.body.removeAttribute('data-theme');
+                localStorage.setItem('banca360_theme', 'light');
+                themeBtnProfile.innerHTML = '<span class="material-symbols-outlined">dark_mode</span> Modo Oscuro';
+            } else {
+                document.body.setAttribute('data-theme', 'dark');
+                localStorage.setItem('banca360_theme', 'dark');
+                themeBtnProfile.innerHTML = '<span class="material-symbols-outlined">light_mode</span> Modo Claro';
+            }
+        });
+    }
+    // --- FIN LÓGICA DE MODO OSCURO ---
+
     const perfilNombre = document.getElementById('perfil-nombre');
     const perfilCorreo = document.getElementById('perfil-correo');
     const perfilCedula = document.getElementById('perfil-cedula');
